@@ -10,7 +10,7 @@ export default async function routes(fastify, options) {
   });
 
   fastify.get("/image", async (request: FastifyRequest, reply: FastifyReply) => {
-    request.query
-    return request.query;
+    const query = request.query
+    return query.url;
   });
 }

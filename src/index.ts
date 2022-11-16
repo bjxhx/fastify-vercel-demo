@@ -10,7 +10,12 @@ export default async function routes(fastify, options) {
   });
 
   fastify.get("/image", async (request: FastifyRequest, reply: FastifyReply) => {
-    const query = request.query
-    return query.url;
+    const query:any = request.query;
+    const url = query.url;
+    const res = await axios.get(url,{
+      responseType:"arraybuffer"
+    })
+    reply.header("content-type","image/jpeg")
+    return res.data;
   });
 }
